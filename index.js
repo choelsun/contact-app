@@ -2,23 +2,18 @@
 // CommonJs Module :                    -> require, module.exports 또는 exports
 
 // const express = require('express') 이 문장을 아래로 변경 해주면 ES6 타입
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
+const app = express();
 
-const app = express()
+import userRouter from "./routes/userRouter.js";
 
-app.get('/', function (req, res) {
-    res.send('GET 요청')
-});
+// app.set(process.env.NODE_ENV, "development");
+// console.log(process.env.NODE_ENV); // NODE_ENV 환경변수
 
-app.post('/', function (req, res) {
-    res.send('POST 요청')
-});
+// 미들웨어 (middlewre)
+app.use(express.json()); // json 데이터를 express에서 처리 가능
+app.use("/", userRouter);
 
-app.put('/', function (req, res) {
-    res.send('PUT 요청')
-});
-
-app.delete('/', function (req, res) {
-    res.send('DELETE 요청')
-});
 app.listen(3000)
