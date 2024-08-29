@@ -4,7 +4,7 @@
     "password": "0000",
     "database": "contact",
     "host": "127.0.0.1",
-    "dialect": "mairadb"
+    "dialect": "mariadb"
   },
   "test": {
     "username": "root",
